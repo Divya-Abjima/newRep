@@ -1,0 +1,16 @@
+<header>
+  <h1>Home page</h1>
+  <nav>
+    <ul>
+      <li>Home</li>
+      <li routerLink="/cakes">Categories</li>
+      <li routerLink="/order">Order</li>
+      <li routerLink="/contact">Contact</li>
+    </ul>
+  </nav>
+</header>
+<div class="content">
+  <router-outlet name="primary"></router-outlet>
+  <div [routerLink]="[{outlets: {specialMenu : ['our-special'] }}]">Today's special</div>
+  <router-outlet name="specialMenu"></router-outlet>
+</div>
