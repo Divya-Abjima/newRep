@@ -1,1 +1,10 @@
-<h2>Order page</h2>
+<h2>Order here</h2>
+<div style="float: right;" *ngIf="show">
+    Thank you placing the order and contact us for any changes/updates in your order.
+</div>
+<div class="forms">
+    <div (click)="orderPage(1)" *ngIf="form1" class="btns">Premade cake order</div> 
+    <div (click)="orderPage(2)" *ngIf="form2" class="btns">Want your custom order?</div>
+    <button *ngIf="showButton" (click)="goBack()" id="back">Back</button>
+</div>
+<router-outlet></router-outlet>

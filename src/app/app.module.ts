@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { SpecialMenuComponent } from './special-menu/special-menu.component';
+import { GetCakesService } from './get-cakes.service';
+import { ResolveGuard } from './guards/resolve.guard';
+import { PremadeComponent } from './premade/premade.component';
+import { CustomComponent } from './custom/custom.component';
 
 @NgModule({
   declarations: [
@@ -13,13 +17,15 @@ import { SpecialMenuComponent } from './special-menu/special-menu.component';
    routingComponents,
    ErrorComponent,
    HomeComponent,
-   SpecialMenuComponent
+   SpecialMenuComponent,
+   PremadeComponent,
+   CustomComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [GetCakesService, ResolveGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
