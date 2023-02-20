@@ -1,0 +1,39 @@
+* {
+    margin:0px;
+    padding:0px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+div {
+    color:white;
+    background: rgba(35, 3, 24, 0.919);
+    width: 15%;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: 'Satisfy', cursive;
+    position: absolute;
+    right:10px;
+    top:20%;
+}
+div > * {
+    padding-bottom:25px;
+}
+ul {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.388);
+}
+li {
+    list-style-type: none;
+    padding-bottom:15px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+#popupHeading {
+    text-decoration: underline;
+    font-family: 'Dancing Script', cursive;
+    animation-name: glow;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+@keyframes glow {
+    from {color:yellow;}
+    to {color:white;}
+}

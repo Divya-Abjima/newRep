@@ -1,0 +1,36 @@
+button {
+    width: fit-content;
+}
+.forms{ 
+    width: fit-content;
+    margin: auto;
+}
+.forms > * {
+    width: 300px;
+    text-align: center;
+    color:white;
+    background-color:rgba(147, 101, 131, 0.789);
+    margin: 10px;
+    padding: 20px 10px;
+    cursor: pointer;
+}
+#back {
+    background-color: transparent;
+    border:none;
+    color:rgba(147, 101, 131, 0.789);
+}
+.btns:hover {
+    animation-name: btnAnimate;
+    animation-duration: 1500ms;
+    animation-timing-function: ease-in-out;
+}
+@keyframes btnAnimate {
+    from {
+        background: transparent;
+        color:rgba(147, 101, 131, 0.789);
+    }
+    to {
+        background: rgba(147, 101, 131, 0.789);
+        color:white;
+    }
+}

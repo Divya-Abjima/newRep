@@ -1,0 +1,19 @@
+* {
+    margin:0px;
+    padding:0px;
+}
+ul {
+    display: flex;
+    width:fit-content;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+li {
+    list-style-type: none;
+    padding: 5px;
+}
+img {
+    width: 50%;
+}

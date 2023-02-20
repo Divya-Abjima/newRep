@@ -1,0 +1,14 @@
+<ul>
+    <ng-container *ngFor="let cake of cakes; let i=index">
+        <li>
+            <div style="display: flex;flex-direction: row;">
+                <img src="{{cake.url}}" alt="{{cake.name}}">
+                <div>
+                    <h3> {{cake.name}}</h3>
+                    <button (click)="getOrder(cake.id)">Order</button>
+                </div>
+            </div>
+            flavor= {{cake.flavour}}
+        </li>
+    </ng-container>
+</ul>
