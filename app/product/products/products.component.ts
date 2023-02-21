@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { GetCakesService } from 'src/app/get-cakes.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { GetCakesService } from 'src/app/get-cakes.service';
 })
 export class ProductsComponent {
   public cakes: any=[];
- 
+  // cakes$: Observable<any>;
+  cakes$ : Observable<any> | undefined;
 
   constructor(private _getCakesService : GetCakesService,
      private activatedRoute: ActivatedRoute,
@@ -21,6 +23,6 @@ export class ProductsComponent {
   }
 
   getOrder(value:any) {
-    this.router.navigate(['order/premade']);
+    this.router.navigate(['order-form/premade']);
   }
 }

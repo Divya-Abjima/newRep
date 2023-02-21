@@ -11,6 +11,7 @@ import { GetCakesService } from './get-cakes.service';
 import { ResolveGuard } from './guards/resolve.guard';
 import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 import { CheckValidGuard } from './guards/check-valid.guard';
+// import { OrderFormModule } from './order-form/order-form.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { CheckValidGuard } from './guards/check-valid.guard';
     BrowserModule,
     AppRoutingModule,
     ProductModule,
+    // OrderFormModule,
     FormsModule,
     ReactiveFormsModule
   ],

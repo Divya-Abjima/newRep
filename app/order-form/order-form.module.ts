@@ -20,12 +20,15 @@ import { CheckValidGuard } from '../guards/check-valid.guard';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild([
-      { path: 'order/premade',
-       component : PremadeComponent},
-      { path: 'order/custom',
-       component: CustomComponent,
-       canDeactivate: [CheckValidGuard]
-    }
+      {
+        path: 'premade',
+        component: PremadeComponent
+      },
+      {
+        path: 'custom',
+        component: CustomComponent,
+        canDeactivate: [CheckValidGuard]
+      }
     ])
   ],
   exports: [
