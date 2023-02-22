@@ -15,6 +15,5 @@
     <div *ngIf="special" (click)="showPopup()">Today's special</div>
     <div *ngIf="!special" (click)="hidePopup()">X</div>
   </div>
-  <app-products></app-products>
   <router-outlet name="specialMenu" id="popup"></router-outlet>
 </div>

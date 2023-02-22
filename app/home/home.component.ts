@@ -18,7 +18,7 @@ export class HomeComponent {
         }
         return item;
       }),
-      catchError(err => of('grater than 100'))
+      catchError(err => of('greater than 100'))
     )
     .subscribe((item)=> console.log(item));
     from([255, 322, 222]).subscribe({

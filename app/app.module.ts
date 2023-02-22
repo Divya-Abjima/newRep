@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ProductModule } from './product/product.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { CheckValidGuard } from './guards/check-valid.guard';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     ProductModule,
     // OrderFormModule,
     FormsModule,

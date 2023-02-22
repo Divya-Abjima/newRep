@@ -9,15 +9,16 @@ import { Router } from '@angular/router';
 })
 export class PremadeComponent {
   public cakes:any=[];
-  show: boolean=false;
   showButton =true;
   constructor(private getCakeService : GetCakesService,
     private router:Router) {}
   ngOnInit() {
-    this.cakes=this.getCakeService.getCakes();
-  }
-  showMessage() {
-    this.show=true;
+    // this.cakes=this.getCakeService.getCakes();
+    this.getCakeService.getCakes()
+        .subscribe({
+          next: (data) => this.cakes= data,
+        }
+          );
   }
   goBack() {
     this.router.navigate(['order']);
