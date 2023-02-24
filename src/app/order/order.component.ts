@@ -25,18 +25,14 @@ export class OrderComponent {
     if(value==1) {
       this.form2=false;
       this.showButton=true;
-      this.router.navigate(['pre-made'], { relativeTo :this.route});
+      console.log('premade');
+      this.router.navigate(['order-form/premade']);
     }
     if(value==2) {
       this.form1=false;
       this.showButton=true;
-      this.router.navigate(['custom'], {relativeTo: this.route});
+      console.log('custom');
+      this.router.navigate(['order-form/custom']);
     }
-  }
-  goBack() {
-    this.form1=true;
-    this.form2=true;
-    this.router.navigate(['/order'], {relativeTo: this.route});
-    this.showButton=false;
   }
 } 

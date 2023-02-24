@@ -1,0 +1,31 @@
+<div class="container" *ngIf="cakes$ | async as cakes">
+    <div>
+        <label for="">Filter: </label>
+        <select name="" id="" (change)="onCategoryChange($event)">
+            <option value="" disabled selected></option>
+            <option value="">Display All</option>
+            <ng-container *ngFor="let category of categories$ | async as categories">
+                <option [value]="category.bread">{{category.bread}}</option>
+            </ng-container>
+        </select>
+        <div>
+            <button (click)="addNewItem()">Add new item</button>
+        </div>
+    </div>
+    <ul>
+        <div *ngIf="filteredProducts$ | async as cakes">
+            <ng-container *ngFor="let cake of cakes; let i=index">
+                <li>
+                    <div style="display: flex;flex-direction: row;">
+                        <img src="{{cake.url}}" alt="{{cake.name}}">
+                        <div>
+                            <h3> {{cake.name}}</h3>
+                            <button (click)="getOrder()">Order</button>
+                        </div>
+                    </div>
+                    flavor= {{cake.flavour}}
+                </li>
+            </ng-container>
+        </div>
+    </ul>
+</div>
