@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ProductModule } from './product/product.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,24 +10,29 @@ import { HomeComponent } from './home/home.component';
 import { SpecialMenuComponent } from './special-menu/special-menu.component';
 import { GetCakesService } from './get-cakes.service';
 import { ResolveGuard } from './guards/resolve.guard';
-import { PremadeComponent } from './premade/premade.component';
-import { CustomComponent } from './custom/custom.component';
-
+import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
+import { CheckValidGuard } from './guards/check-valid.guard';
+import { InterceptorService } from './interceptor.service';
+// import { OrderFormModule } from './order-form/order-form.module';
 @NgModule({
   declarations: [
     AppComponent,
    routingComponents,
    ErrorComponent,
    HomeComponent,
-   SpecialMenuComponent,
-   PremadeComponent,
-   CustomComponent
+   SpecialMenuComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ProductModule,
+    // OrderFormModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [GetCakesService, ResolveGuard],
+  providers: [GetCakesService, ResolveGuard, CheckValidGuard,
+  {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

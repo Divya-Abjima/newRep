@@ -1,1 +1,7 @@
-<p>home works!</p>
+<p *ngIf="mergeMapInfo$ | async as mergeMapInfo">home works!
+    {{mergeMapInfo | json}}
+</p>
+<!-- <button (click)="addFlavor">Add flavor</button>
+<div *ngIf="flavor">
+    {{flavor}}
+</div> -->
