@@ -9,8 +9,10 @@ div {
     width: 15%;
     padding: 15px;
     border-radius: 10px;
-    float: right;
     font-family: 'Satisfy', cursive;
+    position: absolute;
+    right:10px;
+    top:20%;
 }
 div > * {
     padding-bottom:25px;

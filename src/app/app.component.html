@@ -11,6 +11,9 @@
 </header>
 <div class="content">
   <router-outlet name="primary"></router-outlet>
-  <div [routerLink]="[{outlets: {specialMenu : ['our-special'] }}]">Today's special</div>
+  <div style="position: absolute; right:10px;top:120px;">
+    <div *ngIf="special" (click)="showPopup()">Today's special</div>
+    <div *ngIf="!special" (click)="hidePopup()">X</div>
+  </div>
   <router-outlet name="specialMenu" id="popup"></router-outlet>
 </div>

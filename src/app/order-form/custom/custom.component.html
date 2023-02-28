@@ -1,0 +1,33 @@
+<!-- {{customForm.pristine}} -->
+<form>
+    <label for="">Your full name</label>
+    <input type="text" [formControl]="name" name="username">
+    <label for="">Email</label>
+    <input type="email" id="" [formControl]="email" name="email">
+    <label for="">Contact No.</label>
+    <input type="tel" name="contact" [formControl]="contact">
+    <label for="">Cake flavour</label>
+    <input type="text" name="flavour" id="" [formControl]="flavour">
+    <label for="">Icing (like chocolate gnash or rainbow)</label>
+    <input type="text" [formControl]="icing" name="icing">
+    <label for="">How many cake layers do you want?</label>
+    <input type="number" [formControl]="layers" name="layers">
+    <fieldset>
+        <legend> Adress to be delivered </legend>
+        <label for="">House No./Plot No.</label>
+        <input type="text" [formControl]="plotNo" name="plotNo">
+        <label for="">Street/Area</label>
+        <input type="text" [formControl]="street" name="street">
+        <label for="">City/District</label>
+        <input type="text" [formControl]="city" name="city">
+        <label for="">State</label>
+        <input type="text" [formControl]="state" name="state">
+        <label for="">Pincode</label>
+        <input type="text" [formControl]="pin" name="pin">
+    </fieldset>
+    <label for="">Add a refernce image for the cake</label>
+    <input type="image" src="" alt="set image here" [formControl]="img" name="img" width="200px" height="100px" style="border:1px solid gray">
+    <strong>Note: Custom cake orders need to be placed atleast 7 days before expected delivery date</strong>
+    <button (click)="showMessage()">Place order</button>
+</form>
+<button *ngIf="showButton" (click)="goBack()" id="back">Back</button>

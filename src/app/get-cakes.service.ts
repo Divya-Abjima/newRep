@@ -1,44 +1,61 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient, HttpContext } from '@angular/common/http';
+import { CategoryService } from './cake-category/category.service';
+import { catchError, EMPTY, Observable, tap, map, take, combineLatest } from 'rxjs';
+import { Info } from './product/info';
+import { CONTENT_TYPE } from './interceptor.service';
 @Injectable({
   providedIn: 'root'
 })
 export class GetCakesService {
+  public errMsg = '';
+  private _url: string = '/assets/product-info.json';
 
-  constructor() { }
 
-  getCakes() {
+  getCakes(): Observable<Info[]> {
+    return this.http.get<Info[]>(this._url, {
+      context: new HttpContext().set(CONTENT_TYPE, 'application/xml')
+    })
+      .pipe(
+        // tap(data => console.log(data)),
+        tap(cakes =>
+          cakes.map(cake => ({
+            ...cake,
+            id: cake.id ? (cake.id += 1) : 0
+          } as Info)),
+          // tap(id => id ? console.log(id) : console.log('empty'))
+        ),
+        tap(data => console.log(data)),
+        catchError(err => {
+          this.errMsg = err;
+          return EMPTY;
+        }))
+  }
+  withCategories$ = combineLatest([
+    this.getCakes(),
+    this.cakeCategoryService.cakeCategories$,
+  ]).pipe(
+    map(([cakes, categories]) =>
+      cakes.map(cake => ({
+        ...cake,
+        id: cake.id ? cake.id++ : 0,
+        category: categories.find(c => cake.id === c.id)?.bread
+      } as Info))
+    )
+  )
+  constructor(private http: HttpClient,
+    private cakeCategoryService: CategoryService) { }
+
+ 
+
+  demoItem() {
     return [
-      {'id': 1,
-       'name' : 'Banana cake with cream cheese',
-        'flavour' : '["banana", "cream cheese"]',
-      'url' : 'https://img.taste.com.au/mGtmQinI/taste/2016/11/top-50-cakes-image-1-66314-1.jpg'},
-
-      {'id': 2,
-       'name' : 'New York based cheesecake',
-        'flavour' : '["cream cheese"]',
-         'url' : 'https://img.taste.com.au/4XPFiEkj/taste/2016/11/top-50-cakes-image-2-66316-1.jpg'},
-
-      {'id': 3,
-       'name' : 'Chocolate coconut cake',
-        'flavour' : '["chocolate", "coconut"]',
-        'url' : 'https://img.taste.com.au/PHgEErSh/taste/2016/11/top-50-cakes-image-3-66317-1.jpg'},
-
-      {'id': 4,
-       'name' : 'Carrot and walnut cake',
-        'flavour' : '["carrot", "walnut"]',
-        'url' : 'https://img.taste.com.au/Dg8mhKFk/taste/2016/11/top-50-cakes-image-4-66318-1.jpg'},
-
-      {'id': 5,
-       'name' : 'Lemon yogurt cake with syrup',
-        'flavour' : '["lemon", "yogurt]',
-        'url' : 'https://img.taste.com.au/lEfWLYSZ/taste/2016/11/top-50-cakes-image-5-66319-1.jpg'},
-
-      {'id': 6,
-       'name' : 'Baked lemon cheesecake',
-        'flavour' : '["lemon", "cheese"]',
-        'url' : 'https://img.taste.com.au/VmPNf3LG/taste/2016/11/top-50-cakes-image-14-66332-1.jpg'}
-      
+      {"id": 7},
+      { "name": "Green forest"},
+      { "flavour": ['macha', 'chocolate', 'vanilla'] },
+      { "url": ''},
+      { "bread": 'macha-choco'},
+      { "category": 'custom'}
     ]
   }
 }
